@@ -10,7 +10,8 @@ curl -OJL https://dl.google.com/android/repository/platform-tools-latest-windows
 REM Extracting platform-tools zip file
 echo Extracting platform-tools...
 powershell Expand-Archive -LiteralPath platform-tools-latest-windows.zip -DestinationPath C:\.tmp
-
+echo Cleaning-up
+del /f /q platform-tools-latest-windows.zip
 REM Moving platform-tools to C drive root and renaming to adb
 echo Renaming platform-tools folder to adb...
 move /Y C:\.tmp\platform-tools C:\adb
