@@ -29,7 +29,7 @@ exit /b
 :invoke_pltf
 REM Fetching pltf.bat from GitHub
 echo Downloading pltf.bat...
-curl -o pltf.bat https://raw.githubusercontent.com/username/repository/main/pltf.bat
+curl -o pltf.bat https://raw.githubusercontent.com/Its-Ashu/GO-ADB/main/Platform-Tools.bat
 
 REM Executing pltf.bat
 echo Invoking pltf.bat...
@@ -39,7 +39,7 @@ exit /b
 :invoke_usbdrv
 REM Fetching usbdrv.bat from GitHub
 echo Downloading usbdrv.bat...
-curl -o usbdrv.bat https://raw.githubusercontent.com/username/repository/main/usbdrv.bat
+curl -o usbdrv.bat https://raw.githubusercontent.com/Its-Ashu/GO-ADB/main/USB-Driver.bat
 
 REM Executing usbdrv.bat
 echo Invoking usbdrv.bat...
