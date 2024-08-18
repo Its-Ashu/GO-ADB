@@ -92,10 +92,12 @@ $ErrorActionPreference = "Stop"
 
 $DownloadURL = 'https://raw.githubusercontent.com/its-ashu-otf/ADB-GO/main/USB-Driver.bat'
 
+# Create a temporary file to download the script
 $rand = Get-Random -Maximum 99999999
 $isAdmin = [bool]([Security.Principal.WindowsIdentity]::GetCurrent().Groups -match 'S-1-5-32-544')
 $FilePath = if ($isAdmin) { "$env:SystemRoot\Temp\USB_$rand.bat" } else { "$env:TEMP\USB_$rand.bat" }
 
+# Download the script
 try {
     $response = Invoke-WebRequest -Uri $DownloadURL -UseBasicParsing
 }
@@ -103,12 +105,13 @@ catch {
     $response = Invoke-WebRequest -Uri $DownloadURL2 -UseBasicParsing
 }
 
+# Write the script to a file
 $ScriptArgs = "$args "
 $prefix = "@REM $rand `r`n"
 $content = $prefix + $response
 Set-Content -Path $FilePath -Value $content
-
+# Execute the script
 Start-Process $FilePath $ScriptArgs -Wait
-
+# Remove the temporary file
 $FilePaths = @("$env:TEMP\USB*.bat", "$env:SystemRoot\Temp\USB*.bat")
 foreach ($FilePath in $FilePaths) { Get-Item $FilePath | Remove-Item }
