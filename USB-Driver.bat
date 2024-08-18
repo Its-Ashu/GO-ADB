@@ -2,6 +2,8 @@
 
 REM Creating temporary directory
 mkdir C:\.tmp
+color 07
+title Google USB Driver Installer by @its-ashu-otf
 
 REM Downloading USB driver zip file
 echo Downloading USB driver zip file...
